@@ -7,4 +7,8 @@
     <string name="distance_kilometer">%.1f km</string>
     <string name="distance_too_far">Too far..</string>
     <string name="place_no_notes">This location has no notes</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_save">Save</string>
+    <string name="button_details">Details</string>
+    <string name="default_placeholder_new_location">New location</string>
 </resources>

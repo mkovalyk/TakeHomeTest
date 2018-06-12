@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import com.application.data.Place
+import com.application.places.R
+import com.application.places.place.AddPlaceDialogFragment
 import com.application.places.util.obtainViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,7 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions
  * Fragment that displays map with places
  * TODO Add databinding..
  */
-class MapFragment : SupportMapFragment(), OnMapReadyCallback{
+class MapFragment : SupportMapFragment(), OnMapReadyCallback, AddPlaceDialogFragment.AddPlaceListener {
     private val markers = mutableMapOf<Marker, Place>()
     private val model: PlacesViewModel by lazy { (activity as AppCompatActivity).obtainViewModel(PlacesViewModel::class.java) }
     private val placesChangeListener = object : ObservableList.OnListChangedCallback<ObservableArrayList<Place>>() {
@@ -49,6 +51,19 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback{
     private var map: GoogleMap? = null
     private var shouldChangeCamera = true
 
+    //region AddPlaceDialogFragment
+    override fun onCancel() {
+        marker?.remove()
+    }
+
+    override fun onSaveClicked(place: Place) {
+        marker?.remove()
+    }
+
+    override fun onDetailsClicked(place: Place) {
+    }
+    //endregion AddPlaceDialogFragment
+
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         placesChanged(model.places)
@@ -62,6 +77,13 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback{
         googleMap.setOnMapLongClickListener {
             marker?.remove()
             marker = googleMap.addMarker(MarkerOptions().position(it))
+            val place = Place(lat = it.latitude, lng = it.longitude, title = getString(R.string.default_placeholder_new_location))
+            showBottomDialog(place, true)
+        }
+        googleMap.setOnMarkerClickListener { clickedMarker ->
+            val place = markers[clickedMarker]
+            place?.apply { showBottomDialog(place, false) }
+            true
         }
     }
 
@@ -73,6 +95,12 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback{
                 map?.isMyLocationEnabled = true
             }
         }
+    }
+
+    private fun showBottomDialog(place: Place, edit: Boolean) {
+        val dialog = AddPlaceDialogFragment.newInstance(place, edit, model.location.value)
+        dialog.setTargetFragment(this, REQUEST_CODE_ADD_PLACE_FRAGMENT)
+        dialog.show(activity!!.supportFragmentManager, AddPlaceDialogFragment.TAG)
     }
 
     override fun onCreate(bundle: Bundle?) {
@@ -110,6 +138,7 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback{
 
     companion object {
         private const val REQUEST_CODE_PERMISSIONS = 1
+        private const val REQUEST_CODE_ADD_PLACE_FRAGMENT = 2
         private const val CAMERA_PADDING = 100
         fun newInstance(): MapFragment = MapFragment()
     }
