@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import com.application.data.Place
 import com.application.places.R
+import com.application.places.detail.DetailsActivity
 import com.application.places.place.AddPlaceDialogFragment
 import com.application.places.util.obtainViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -58,9 +59,11 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback, AddPlaceDialogFrag
 
     override fun onSaveClicked(place: Place) {
         marker?.remove()
+        startActivity(DetailsActivity.create(context!!, place, true))
     }
 
     override fun onDetailsClicked(place: Place) {
+        startActivity(DetailsActivity.create(context!!, place, false))
     }
     //endregion AddPlaceDialogFragment
 

@@ -11,4 +11,11 @@
     <string name="button_save">Save</string>
     <string name="button_details">Details</string>
     <string name="default_placeholder_new_location">New location</string>
+    <string name="title_activity_details">Details</string>
+    <string name="action_save">Save</string>
+    <string name="action_edit">Edit</string>
+    <string name="details_hint_your_notes">Your notes</string>
+    <string name="details_hint_title">Title</string>
+    <string name="error_empty_title">Please enter title</string>
+
 </resources>

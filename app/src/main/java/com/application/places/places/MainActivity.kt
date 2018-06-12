@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.application.places.CommonFactory
 import com.application.places.R
+import com.application.places.detail.DetailsActivity
 import com.application.places.location.LocationTracker
 import com.application.places.util.obtainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             placesViewModel.loadData()
         })
         placesViewModel.placeClicked.observe(this, Observer {
+            startActivity(DetailsActivity.create(this, it!!, false))
         })
     }
 
