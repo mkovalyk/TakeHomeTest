@@ -3,13 +3,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 27
+    def versions = rootProject.extensions.getByName("ext")
 
-
+    compileSdkVersion versions["android_сompile_sdk_version"]
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 27
+        minSdkVersion versions["android_min_sdk_version"]
+        targetSdkVersion versions["android_target_sdk_version"]
         versionCode 1
         versionName "1.0"
 
@@ -27,20 +27,20 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    def room_version = "1.1.0"
-
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutine_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5'
-    api 'com.google.code.gson:gson:2.8.4'
+    implementation "com.squareup.okhttp3:okhttp:$ok_http_version"
+    api "com.google.code.gson:gson:$gson_version"
 
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:$mockito_core_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_core_version"
+    androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+    androidTestImplementation "com.android.support.test:runner:${test_runner_version}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_core"
 }
 
 kotlin {
