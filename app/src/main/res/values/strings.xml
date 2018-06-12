@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Places</string>
+    <string name="app_name">TakeHomeTest</string>
+    <string name="title_activity_main">TakeHomeTest</string>
+    <string name="tab_text_1">MAP</string>
+    <string name="tab_text_2">LIST</string>
+    <string name="distance_meter">%d m</string>
+    <string name="distance_kilometer">%.1f km</string>
+    <string name="distance_too_far">Too far..</string>
+    <string name="place_no_notes">This location has no notes</string>
 </resources>
