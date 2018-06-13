@@ -53,7 +53,7 @@ class DetailsViewModel(private val repository: PlacesRepository,
     }
 
     fun enterEditMode() {
-        inEditMode.set(!inEditMode.get())
+        inEditMode.set(true)
     }
 
     fun confirm() {

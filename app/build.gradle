@@ -49,12 +49,11 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_core_version"
     testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "android.arch.core:core-testing:$arch_lifecycle_version"
 
     androidTestImplementation "org.mockito:mockito-android:$mockito_core_version"
     androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
     androidTestImplementation "com.android.support.test:runner:${test_runner_version}"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_core"
-    androidTestImplementation "org.mockito:mockito-android:$mockito_core_version"
 }
 kotlin {
     experimental {

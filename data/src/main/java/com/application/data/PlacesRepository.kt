@@ -7,9 +7,9 @@ import com.application.data.source.local.LocalSourceValidator
 /**
  * Repository to work with Places
  */
-class PlacesRepository(private val localSource: PlacesSource,
-                       private val remoteSource: PlacesSource,
-                       private val storageValidator: LocalSourceValidator) {
+open class PlacesRepository(private val localSource: PlacesSource,
+                            private val remoteSource: PlacesSource,
+                            private val storageValidator: LocalSourceValidator) {
 
     suspend fun getAll(lat: Double?, lng: Double?): List<Place> {
         return if (storageValidator.isValid) {
@@ -23,8 +23,8 @@ class PlacesRepository(private val localSource: PlacesSource,
         }
     }
 
+    // In future sorting should be moved to DB.
     private suspend fun getFromLocalSortedByDistance(lat: Double?, lng: Double?) =
-            // In future sorting should be moved to DB.
             localSource.getAll().sortedBy { it -> getDistanceBetweenPoints(it.lat, it.lng, lat, lng) }
 
     suspend fun add(place: Place) {

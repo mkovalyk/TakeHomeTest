@@ -45,8 +45,10 @@ class PlacesViewModel(private val repository: PlacesRepository,
 
     override fun onCleared() {
         super.onCleared()
-        jobs.forEach {
-            it.cancel()
-        }
+        jobs.filter { it.isActive }
+                .forEach {
+                    it.cancel()
+                }
+        jobs.clear()
     }
 }
