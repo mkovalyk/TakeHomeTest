@@ -19,14 +19,6 @@ open class LocalPlacesSource(private val placesDao: PlacesDao) : PlacesSource {
         placesDao.insertPlace(place)
     }
 
-    override suspend fun update(updated: Place) {
-        placesDao.updateTask(updated)
-    }
-
-    override suspend fun remove(id: String) {
-        placesDao.removeById(id)
-    }
-
     override suspend fun removeAll() {
         placesDao.removeAll()
     }

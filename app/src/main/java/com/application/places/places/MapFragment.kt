@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapFragment : SupportMapFragment(), OnMapReadyCallback, AddPlaceDialogFragment.AddPlaceListener {
     private val markers = mutableMapOf<Marker, Place>()
     private val model: PlacesViewModel by lazy { (activity as AppCompatActivity).obtainViewModel(PlacesViewModel::class.java) }
+
     private val placesChangeListener = object : ObservableList.OnListChangedCallback<ObservableArrayList<Place>>() {
         override fun onChanged(sender: ObservableArrayList<Place>?) {
 
@@ -41,6 +42,7 @@ class MapFragment : SupportMapFragment(), OnMapReadyCallback, AddPlaceDialogFrag
 
         override fun onItemRangeInserted(sender: ObservableArrayList<Place>?, positionStart: Int, itemCount: Int) {
             if (sender != null) {
+                // places can only be added
                 placesChanged(sender)
             }
         }

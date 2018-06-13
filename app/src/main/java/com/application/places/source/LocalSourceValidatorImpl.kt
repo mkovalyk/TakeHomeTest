@@ -3,12 +3,12 @@ package com.application.places.source
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import com.application.data.source.local.LocalSourceTracker
+import com.application.data.source.local.LocalSourceValidator
 
 /**
  * Implementation of the source tracker which stores information whether local cache is valid or not.
  */
-class LocalSourceTrackerImpl(context: Context) : LocalSourceTracker {
+class LocalSourceValidatorImpl(context: Context) : LocalSourceValidator {
     private val prefs: SharedPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(context) }
 
     override var isValid: Boolean

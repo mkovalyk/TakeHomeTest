@@ -2,15 +2,16 @@ package com.application.places
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.arch.persistence.room.Room
 import android.content.Context
 import com.application.data.PlacesRepository
 import com.application.data.source.PlacesSource
 import com.application.data.source.local.LocalPlacesSource
-import com.application.data.source.local.LocalSourceTracker
+import com.application.data.source.local.LocalSourceValidator
 import com.application.data.source.local.PlacesDatabase
 import com.application.data.source.remote.RemotePlacesSource
 import com.application.places.location.LocationTracker
-import com.application.places.source.LocalSourceTrackerImpl
+import com.application.places.source.LocalSourceValidatorImpl
 import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
 
@@ -20,18 +21,20 @@ import com.google.gson.Gson
  */
 @Suppress("MemberVisibilityCanBePrivate")
 class CommonFactory private constructor(application: Application) {
-    val storageTracker: LocalSourceTracker
+    val storageValidator: LocalSourceValidator
     val localSource: PlacesSource
     val remoteSource: PlacesSource
     val placesRepository: PlacesRepository
     val locationTracker: LocationTracker
 
     init {
-        storageTracker = LocalSourceTrackerImpl(application)
-        val database = PlacesDatabase.getInstance(application)
+        storageValidator = LocalSourceValidatorImpl(application)
+        val database = Room.databaseBuilder(application,
+                PlacesDatabase::class.java, "Places.db")
+                .build()
         localSource = LocalPlacesSource(database.placeDao())
-        remoteSource = RemotePlacesSource(Gson())
-        placesRepository = PlacesRepository(localSource, remoteSource, storageTracker)
+        remoteSource = RemotePlacesSource(Gson(), okhttp3.OkHttpClient())
+        placesRepository = PlacesRepository(localSource, remoteSource, storageValidator)
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(application as Context)
         locationTracker = LocationTracker(fusedLocationClient)
     }
@@ -43,7 +46,6 @@ class CommonFactory private constructor(application: Application) {
 
         fun getInstance(application: Application) =
                 INSTANCE ?: synchronized(CommonFactory::class.java) {
-                    val factory = CommonFactory(application)
                     INSTANCE ?: CommonFactory(application)
                             .also { INSTANCE = it }
                 }

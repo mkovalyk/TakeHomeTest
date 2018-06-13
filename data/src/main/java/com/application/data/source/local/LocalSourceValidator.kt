@@ -1,6 +1,6 @@
 package com.application.data.source.local
 
-interface LocalSourceTracker {
+interface LocalSourceValidator {
     /**
      * Indicator whether or not data in local storage is valid.
      */

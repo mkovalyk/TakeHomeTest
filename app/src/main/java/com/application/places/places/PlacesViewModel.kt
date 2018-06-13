@@ -20,10 +20,10 @@ class PlacesViewModel(private val repository: PlacesRepository,
                       private val backgroundCoroutineContext: CoroutineContext,
                       private val postCoroutineContext: CoroutineContext) : ViewModel() {
     val places = ObservableArrayList<Place>()
-    var location = MutableLiveData<Location>()
     val placeClicked = SingleLiveEvent<Place>()
     val error = MutableLiveData<String>()
     private val jobs: MutableList<Job> = mutableListOf()
+    var location = MutableLiveData<Location>()
 
     fun loadData() {
         jobs.add(launch(postCoroutineContext) {

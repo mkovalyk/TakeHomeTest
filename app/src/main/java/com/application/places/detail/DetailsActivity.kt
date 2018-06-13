@@ -20,17 +20,13 @@ class DetailsActivity : AppCompatActivity() {
     private val detailsViewModel: DetailsViewModel by lazy { obtainViewModel(DetailsViewModel::class.java) }
     private val place: Place by lazy { intent.getParcelableExtra<Place>(EXTRA_PLACE) }
 
+    //TODO Create separate BindingAdapter for this in future
     private val editModeChangeCallback = object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
             val inEditMode = (sender as ObservableBoolean).get()
             val drawable = if (inEditMode) R.drawable.ic_arrow_back_white_24dp else R.drawable.ic_close_white_24dp
             supportActionBar?.setHomeAsUpIndicator(drawable)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        detailsViewModel.inEditMode.removeOnPropertyChangedCallback(editModeChangeCallback)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,9 +48,15 @@ class DetailsActivity : AppCompatActivity() {
         detailsViewModel.message.observe(this, Observer {
             Toast.makeText(this, it!!, Toast.LENGTH_LONG).show()
         })
+
         if (savedInstanceState == null) {
             detailsViewModel.initWith(place, inEditMode)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        detailsViewModel.inEditMode.removeOnPropertyChangedCallback(editModeChangeCallback)
     }
 
     companion object {

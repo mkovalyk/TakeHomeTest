@@ -10,9 +10,8 @@ import com.application.places.util.distanceToLocalized
 /**
  * Adapter for places.
  */
-class PlaceAdapter internal constructor(val placesViewModel: PlacesViewModel)
-    : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>() {
-
+class PlaceAdapter internal constructor(val placesViewModel: PlacesViewModel) :
+        RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>() {
     private val places: MutableList<Place> = mutableListOf()
 
     fun setPlaces(updatedPlace: List<Place>?) {
@@ -36,7 +35,7 @@ class PlaceAdapter internal constructor(val placesViewModel: PlacesViewModel)
         holder.bind(place)
     }
 
-    inner class PlaceViewHolder internal constructor(val binding: PlaceListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PlaceViewHolder internal constructor(private val binding: PlaceListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(place: Place) {
             with(binding) {
                 this.place = place

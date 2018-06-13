@@ -20,32 +20,32 @@ import com.application.places.util.obtainViewModel
  * A bottom sheet dialog fragment that either adds new place or show information about the existing one.
  */
 class AddPlaceDialogFragment : BottomSheetDialogFragment() {
-    private var addPlaceListener: AddPlaceListener? = null
     private val place by lazy { arguments?.getParcelable<Place>(ARGUMENT_PLACE)!! }
     private val inEditMode by lazy { arguments?.getBoolean(ARGUMENT_EDIT) ?: false }
-    private val location by lazy { arguments?.getParcelable<Location>(ARGUMENT_LOCATION)}
+    private val location by lazy { arguments?.getParcelable<Location>(ARGUMENT_LOCATION) }
+    private var addPlaceListener: AddPlaceListener? = null
     private lateinit var dataBinding: FragmentAddPlaceDialogBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-         val model= (activity as AppCompatActivity).obtainViewModel(AddPlaceViewModel::class.java)
+        val model = (activity as AppCompatActivity).obtainViewModel(AddPlaceViewModel::class.java)
         dataBinding = FragmentAddPlaceDialogBinding.inflate(inflater, container, false).apply {
             viewModel = model
             distanceTo = place.distanceToLocalized(location, root.context)
         }
-            model.initWith(this.place, this.inEditMode, this.location)
-            model.cancelClicked.observe(this, Observer {
-                addPlaceListener?.onCancel()
-                dismiss()
-            })
-            model.saveClicked.observe(this, Observer {
-                addPlaceListener?.onSaveClicked(place)
-                dismiss()
-            })
-            model.detailsClicked.observe(this, Observer {
-                addPlaceListener?.onDetailsClicked(place)
-                dismiss()
-            })
+        model.initWith(this.place, this.inEditMode, this.location)
+        model.cancelClicked.observe(this, Observer {
+            addPlaceListener?.onCancel()
+            dismiss()
+        })
+        model.saveClicked.observe(this, Observer {
+            addPlaceListener?.onSaveClicked(place)
+            dismiss()
+        })
+        model.detailsClicked.observe(this, Observer {
+            addPlaceListener?.onDetailsClicked(place)
+            dismiss()
+        })
 
         return dataBinding.root
     }

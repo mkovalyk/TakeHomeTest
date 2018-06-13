@@ -14,9 +14,9 @@ import com.application.places.util.obtainViewModel
  * Fragment which display details about a place
  */
 class DetailsActivityFragment : Fragment() {
-    private lateinit var bindings: FragmentDetailsBinding
     private var editMenuItem: MenuItem? = null
     private var saveMenuItem: MenuItem? = null
+    private lateinit var bindings: FragmentDetailsBinding
 
     private val editModeChangedCallback = object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(sender: Observable?, propertyId: Int) {

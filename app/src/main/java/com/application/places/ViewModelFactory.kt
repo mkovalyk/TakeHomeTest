@@ -14,8 +14,9 @@ import kotlinx.coroutines.experimental.android.UI
 /**
  * Factory that provides ViewModels
  */
-class ViewModelFactory private constructor(val application: Application, private val placesRepository: PlacesRepository)
-    : ViewModelProvider.NewInstanceFactory() {
+@Suppress("UNCHECKED_CAST")
+class ViewModelFactory private constructor(val application: Application, private val placesRepository: PlacesRepository) :
+        ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>) =
             with(modelClass) {

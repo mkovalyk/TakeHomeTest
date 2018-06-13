@@ -11,10 +11,8 @@ import okhttp3.Request
 /**
  * Source that is used for communication with remote server.
  */
-class RemotePlacesSource(private val gson: Gson) : PlacesSource {
+class RemotePlacesSource(private val gson: Gson, private val client: OkHttpClient) : PlacesSource {
     override suspend fun getAll(): List<Place> {
-        val client = OkHttpClient()
-
         // Create request for remote resource.
         val request = Request.Builder()
                 .url(ENDPOINT)
@@ -27,28 +25,19 @@ class RemotePlacesSource(private val gson: Gson) : PlacesSource {
         return result
     }
 
-
-    companion object {
-        const val ENDPOINT = "https://s3-ap-southeast-2.amazonaws.com/com-cochlear-sabretooth-takehometest/locations.json"
-    }
-
     override suspend fun addAll(places: List<Place>) {
-// Not implemented for now
+        // Not implemented for now
     }
 
     override suspend fun add(place: Place) {
-// Not implemented for now
-    }
-
-    override suspend fun update(updated: Place) {
-// Not implemented for now
-    }
-
-    override suspend fun remove(id: String) {
-// Not implemented for now
+        // Not implemented for now
     }
 
     override suspend fun removeAll() {
-// Not implemented for now
+        // Not implemented for now
+    }
+
+    companion object {
+        const val ENDPOINT = "https://s3-ap-southeast-2.amazonaws.com/com-cochlear-sabretooth-takehometest/locations.json"
     }
 }

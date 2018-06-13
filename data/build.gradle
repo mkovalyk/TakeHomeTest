@@ -31,7 +31,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
-    implementation "com.squareup.okhttp3:okhttp:$ok_http_version"
+    api "com.squareup.okhttp3:okhttp:$ok_http_version"
     api "com.google.code.gson:gson:$gson_version"
 
     testImplementation "junit:junit:$junit_version"

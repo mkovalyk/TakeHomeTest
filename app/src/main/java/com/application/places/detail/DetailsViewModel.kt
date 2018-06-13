@@ -22,8 +22,8 @@ class DetailsViewModel(private val repository: PlacesRepository,
     val inEditMode = ObservableBoolean()
     val exit = SingleLiveEvent<Void>()
     val message = SingleLiveEvent<Int>()
-    var place = ObservableField<Place>()
     val error = MutableLiveData<String>()
+    var place = ObservableField<Place>()
     private var inCreateMode: Boolean = false
 
     fun initWith(place: Place, inEditMode: Boolean) {
