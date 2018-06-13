@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
         placesViewModel.placeClicked.observe(this, Observer {
             startActivity(DetailsActivity.create(this, it!!, false))
         })
+        placesViewModel.error.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
     }
 
     override fun onStart() {

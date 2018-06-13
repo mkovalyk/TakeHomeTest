@@ -42,6 +42,9 @@ class DetailsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        detailsViewModel.error.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
         detailsViewModel.inEditMode.addOnPropertyChangedCallback(editModeChangeCallback)
         detailsViewModel.exit.observe(this, Observer {
             finish()

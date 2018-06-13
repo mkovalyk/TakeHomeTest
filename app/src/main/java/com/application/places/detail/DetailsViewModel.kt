@@ -1,5 +1,6 @@
 package com.application.places.detail
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
@@ -22,6 +23,7 @@ class DetailsViewModel(private val repository: PlacesRepository,
     val exit = SingleLiveEvent<Void>()
     val message = SingleLiveEvent<Int>()
     var place = ObservableField<Place>()
+    val error = MutableLiveData<String>()
     private var inCreateMode: Boolean = false
 
     fun initWith(place: Place, inEditMode: Boolean) {
@@ -32,8 +34,12 @@ class DetailsViewModel(private val repository: PlacesRepository,
 
     private fun add() {
         launch(postCoroutineContext) {
-            withContext(backgroundCoroutineContext) {
-                repository.add(place.get()!!)
+            try {
+                withContext(backgroundCoroutineContext) {
+                    repository.add(place.get()!!)
+                }
+            } catch (ex: Exception) {
+                error.value = ex.localizedMessage
             }
         }
     }
