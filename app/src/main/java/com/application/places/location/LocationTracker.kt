@@ -34,7 +34,7 @@ class LocationTracker(private val fusedLocationClient: FusedLocationProviderClie
     }
 
     // TODO add lifecycle handling
-    fun startTracking(success: (location: Location) -> Unit, failure: (exception: Exception) -> Unit) {
+    fun startTracking(success: (location: Location?) -> Unit, failure: (exception: Exception) -> Unit) {
         this.successListener = success
         this.failureListener = failure
         try {
