@@ -8,6 +8,7 @@ import com.application.data.Place
 import com.application.data.PlacesRepository
 import com.application.places.R
 import com.application.places.SingleLiveEvent
+import kotlinx.coroutines.experimental.CoroutineScope
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.withContext
 import kotlin.coroutines.experimental.CoroutineContext
@@ -33,7 +34,7 @@ class DetailsViewModel(private val repository: PlacesRepository,
     }
 
     private fun add() {
-        launch(postCoroutineContext) {
+        CoroutineScope(postCoroutineContext).launch {
             try {
                 withContext(backgroundCoroutineContext) {
                     repository.add(place.get()!!)

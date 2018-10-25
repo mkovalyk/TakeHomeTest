@@ -8,8 +8,7 @@ import com.application.data.PlacesRepository
 import com.application.places.detail.DetailsViewModel
 import com.application.places.place.AddPlaceViewModel
 import com.application.places.places.PlacesViewModel
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.Dispatchers
 
 /**
  * Factory that provides ViewModels
@@ -22,11 +21,11 @@ class ViewModelFactory private constructor(val application: Application, private
             with(modelClass) {
                 when {
                     isAssignableFrom(PlacesViewModel::class.java) ->
-                        PlacesViewModel(placesRepository, CommonPool, UI)
+                        PlacesViewModel(placesRepository, Dispatchers.Default, Dispatchers.Main)
                     isAssignableFrom(AddPlaceViewModel::class.java) ->
                         AddPlaceViewModel()
                     isAssignableFrom(DetailsViewModel::class.java) ->
-                        DetailsViewModel(placesRepository, CommonPool, UI)
+                        DetailsViewModel(placesRepository, Dispatchers.Default, Dispatchers.Main)
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }

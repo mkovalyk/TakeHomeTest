@@ -9,8 +9,8 @@ import java.util.*
 
 @Entity(tableName = "Places")
 data class Place @JvmOverloads constructor(
-        @ColumnInfo(name = "title") var title: String = "",
-        @ColumnInfo(name = "description") var description: String = "",
+        @ColumnInfo(name = "title") var title: String? = "",
+        @ColumnInfo(name = "description") var description: String? = "",
         @ColumnInfo(name = "lat") var lat: Double? = null,
         @ColumnInfo(name = "lng") var lng: Double? = null,
         @PrimaryKey @ColumnInfo(name = "id") var id: String = UUID.randomUUID().toString()) : Parcelable {
