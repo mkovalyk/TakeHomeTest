@@ -2,8 +2,8 @@ package com.application.places
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.application.data.PlacesRepository
 import com.application.places.detail.DetailsViewModel
 import com.application.places.place.AddPlaceViewModel

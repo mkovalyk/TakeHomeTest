@@ -1,7 +1,7 @@
 package com.application.places
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.Observer
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import com.application.data.Place
 import com.application.places.place.AddPlaceViewModel
 import com.nhaarman.mockito_kotlin.anyOrNull

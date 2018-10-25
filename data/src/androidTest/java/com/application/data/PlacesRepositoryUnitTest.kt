@@ -1,6 +1,6 @@
 package com.application.data
 
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.runner.AndroidJUnit4
 import com.application.data.Utils.getDistanceBetweenPoints
 import com.application.data.source.PlacesSource
 import com.application.data.source.local.LocalSourceValidator

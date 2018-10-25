@@ -1,8 +1,8 @@
 package com.application.places.place
 
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import android.location.Location
 import com.application.data.Place
 import com.application.places.SingleLiveEvent

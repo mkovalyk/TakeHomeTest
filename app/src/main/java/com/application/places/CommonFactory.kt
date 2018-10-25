@@ -2,7 +2,7 @@ package com.application.places
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import android.content.Context
 import com.application.data.PlacesRepository
 import com.application.data.source.PlacesSource

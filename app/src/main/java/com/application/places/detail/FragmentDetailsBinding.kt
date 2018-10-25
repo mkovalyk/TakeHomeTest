@@ -1,6 +1,6 @@
 package com.application.places.detail
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.widget.EditText
 
 /**

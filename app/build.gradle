@@ -13,7 +13,7 @@ android {
         targetSdkVersion versions["android_target_sdk_version"]
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -29,31 +29,31 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation "com.android.support:appcompat-v7:$google_library_version"
-    implementation "com.android.support:design:$google_library_version"
-    implementation "com.android.support:support-v4:$google_library_version"
-    implementation "com.android.support:recyclerview-v7:$google_library_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
-    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
-    implementation "android.arch.lifecycle:livedata:$lifecycle_version"
-    implementation "android.arch.lifecycle:runtime:$lifecycle_version"
-    implementation "com.android.support.constraint:constraint-layout:$constraint_layout"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation "com.google.android.gms:play-services-location:$play_services"
     implementation "com.google.android.gms:play-services-maps:$play_services"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
-    kapt "com.android.databinding:compiler:$gradle_plugin_version"
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+//    kapt "com.android.databinding:compiler:$gradle_plugin_version"
 
     implementation project(":data")
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_core_version"
     testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
-    testImplementation "android.arch.core:core-testing:$arch_lifecycle_version"
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
 
     androidTestImplementation "org.mockito:mockito-android:$mockito_core_version"
     androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
-    androidTestImplementation "com.android.support.test:runner:${test_runner_version}"
+    androidTestImplementation 'androidx.test:runner:1.1.0'
 }
 kotlin {
     experimental {

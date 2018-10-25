@@ -1,12 +1,12 @@
 package com.application.places.detail
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
-import android.databinding.Observable
-import android.databinding.ObservableBoolean
+import androidx.databinding.Observable
+import androidx.databinding.ObservableBoolean
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.application.data.Place
 import com.application.places.R

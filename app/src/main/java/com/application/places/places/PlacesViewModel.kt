@@ -1,8 +1,8 @@
 package com.application.places.places
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableArrayList
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableArrayList
 import android.location.Location
 import com.application.data.Place
 import com.application.data.PlacesRepository

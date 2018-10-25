@@ -2,11 +2,11 @@ package com.application.places.places
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.databinding.ObservableArrayList
-import android.databinding.ObservableList
+import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableList
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.application.data.Place
 import com.application.places.R
 import com.application.places.detail.DetailsActivity

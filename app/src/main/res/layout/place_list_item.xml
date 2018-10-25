@@ -20,7 +20,7 @@
             type="com.application.places.places.PlaceInteractionListener"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent_layout"
         android:layout_width="match_parent"
         android:layout_height="76dp"
@@ -85,5 +85,5 @@
             tools:text="Description"/>
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

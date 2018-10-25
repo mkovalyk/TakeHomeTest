@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -29,8 +29,8 @@ android {
 dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutine_version}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "android.arch.persistence.room:runtime:$room_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
+    api 'androidx.room:room-runtime:2.1.0-alpha01'
+    kapt 'androidx.room:room-compiler:2.1.0-alpha01'
     api "com.squareup.okhttp3:okhttp:$ok_http_version"
     api "com.google.code.gson:gson:$gson_version"
 
@@ -40,7 +40,7 @@ dependencies {
 
     androidTestImplementation "org.mockito:mockito-android:$mockito_core_version"
     androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
-    androidTestImplementation "com.android.support.test:runner:${test_runner_version}"
+    androidTestImplementation 'androidx.test:runner:1.1.0'
 }
 
 kotlin {
