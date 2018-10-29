@@ -14,7 +14,7 @@ class MapperTest{
         val result = PlaceMapper.mapToPlace(location)
 
         assertEquals(location.lat, result.lat)
-        assertEquals(location.lng, result.lng)
+        assertEquals(location.lng, result.lat)
         assertEquals(location.name, result.title)
     }
 }
