@@ -5,7 +5,7 @@ import com.application.data.Utils.getDistanceBetweenPoints
 import com.application.data.source.PlacesSource
 import com.application.data.source.local.LocalSourceValidator
 import com.nhaarman.mockito_kotlin.mock
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Before

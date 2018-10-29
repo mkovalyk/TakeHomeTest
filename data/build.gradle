@@ -1,5 +1,5 @@
-apply plugin: 'com.android.library'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
@@ -41,11 +41,4 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:$mockito_core_version"
     androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
     androidTestImplementation 'androidx.test:runner:1.1.0'
-}
-
-kotlin {
-    experimental
-            {
-                coroutines 'enable'
-            }
 }

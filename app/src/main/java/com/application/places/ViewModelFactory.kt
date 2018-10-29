@@ -8,7 +8,7 @@ import com.application.data.PlacesRepository
 import com.application.places.detail.DetailsViewModel
 import com.application.places.place.AddPlaceViewModel
 import com.application.places.places.PlacesViewModel
-import kotlinx.coroutines.experimental.Dispatchers
+import kotlinx.coroutines.Dispatchers
 
 /**
  * Factory that provides ViewModels

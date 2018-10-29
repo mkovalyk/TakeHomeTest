@@ -8,10 +8,10 @@ import com.application.data.Place
 import com.application.data.PlacesRepository
 import com.application.places.R
 import com.application.places.SingleLiveEvent
-import kotlinx.coroutines.experimental.CoroutineScope
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.withContext
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlin.coroutines.CoroutineContext
 
 /**
  * ViewModel for handling details screen of the place

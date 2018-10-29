@@ -5,7 +5,7 @@ import com.application.data.source.fake.FakeLocalSourceValidator
 import com.application.data.source.fake.FakePlacesSource
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.`when`

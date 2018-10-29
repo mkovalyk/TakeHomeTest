@@ -14,11 +14,13 @@ import com.application.places.detail.DetailsActivity
 import com.application.places.location.LocationTracker
 import com.application.places.util.obtainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Job
 
 class MainActivity : AppCompatActivity() {
     private val placesViewModel: PlacesViewModel by lazy { obtainViewModel(PlacesViewModel::class.java) }
     private val sectionsPagerAdapter: SectionsPagerAdapter by lazy { SectionsPagerAdapter(supportFragmentManager) }
     private lateinit var locationTracker: LocationTracker
+    lateinit var job : Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

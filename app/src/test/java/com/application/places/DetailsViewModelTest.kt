@@ -8,8 +8,8 @@ import com.application.data.source.PlacesSource
 import com.application.data.source.fake.FakeLocalSourceValidator
 import com.application.places.detail.DetailsViewModel
 import com.nhaarman.mockito_kotlin.*
-import kotlinx.coroutines.experimental.Unconfined
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.Dispatchers.Unconfined
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test

@@ -1,6 +1,6 @@
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -41,7 +41,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:$play_services"
     implementation "com.google.android.gms:play-services-maps:$play_services"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.0.0'
 //    kapt "com.android.databinding:compiler:$gradle_plugin_version"
 
     implementation project(":data")
@@ -54,9 +54,4 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:$mockito_core_version"
     androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
     androidTestImplementation 'androidx.test:runner:1.1.0'
-}
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
 }
